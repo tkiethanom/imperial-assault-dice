@@ -1,0 +1,63 @@
+{
+    "name": "imperial-assault-dice",
+    "version": "1.0.0",
+    "description": "A responsive web application for Imperial Assault dice rolling",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "NODE_ENV=production ./node_modules/.bin/webpack",
+        "watch": "NODE_ENV=development ./node_modules/.bin/webpack --watch",
+        "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --open",
+        "deploy": "git subtree push --prefix dist origin gh-pages"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tkiethanom/imperial-assault-dice.git"
+    },
+    "author": "Tawin Kiethanom",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tkiethanom/imperial-assault-dice/issues"
+    },
+    "homepage": "https://github.com/tkiethanom/imperial-assault-dice#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "babel-loader": "^7.1.2",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-register": "^6.26.0",
+        "clean-webpack-plugin": "^0.1.18",
+        "copy-webpack-plugin": "^4.3.1",
+        "css-loader": "^0.28.9",
+        "file-loader": "^1.1.6",
+        "html-webpack-plugin": "^2.30.1",
+        "json-loader": "^0.5.7",
+        "jsx-control-statements": "^3.2.8",
+        "lodash": "^4.17.4",
+        "node-sass": "^4.7.2",
+        "numeral": "^2.0.6",
+        "prettier": "^1.10.2",
+        "prop-types": "^15.6.0",
+        "random-js": "^1.0.8",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "react-hot-loader": "^3.1.3",
+        "react-redux": "^5.0.6",
+        "react-router": "^4.2.0",
+        "react-router-dom": "^4.2.2",
+        "react-sound": "^1.1.0",
+        "redux": "^3.7.2",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.2.0",
+        "resolve-url-loader": "^2.2.1",
+        "sass-loader": "^6.0.6",
+        "style-loader": "^0.19.1",
+        "url-loader": "^0.6.2",
+        "webpack": "^3.10.0",
+        "webpack-dev-server": "^2.11.1"
+    }
+}

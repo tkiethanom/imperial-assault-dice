@@ -1,0 +1,44 @@
+@import '~scss/variables';
+
+.dice-selector {
+    &__inner {
+        padding: 0 0 5px 0;
+    }
+
+    &__row {
+        overflow: visible;
+    }
+
+    &__selectable-dice {
+        height: 32px;
+        width: 32px;
+        border-radius: 5px;
+        margin: 0 5px 5px 0;
+        float: left;
+        cursor: pointer;
+
+        &:active {
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        &--blue {
+            background-color: $dice-blue;
+        }
+        &--red {
+            background-color: $dice-red;
+        }
+        &--yellow {
+            background-color: $dice-yellow;
+        }
+        &--green {
+            background-color: $dice-green;
+        }
+        &--white {
+            background-color: $dice-white;
+            border: 1px solid $dice-white-border;
+        }
+        &--black {
+            background-color: $dice-black;
+        }
+    }
+}
