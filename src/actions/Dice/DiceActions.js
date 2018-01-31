@@ -27,14 +27,17 @@ export function removeDice(index) {
 }
 
 export function rollDice(dispatch) {
-    setTimeout(() => dispatch(doneRolling()), 500);
+    setTimeout(() => {
+        dispatch(doneRolling());
+        dispatch(calcTotals());
+    }, 500);
 
     return {
         type: ROLL_DICE,
     };
 }
 
-export function doneRolling() {
+export function doneRolling(dispatch) {
     return {
         type: DONE_ROLLING,
     };

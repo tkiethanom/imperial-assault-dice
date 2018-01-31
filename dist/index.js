@@ -2587,7 +2587,8 @@ function removeDice(index) {
 
 function rollDice(dispatch) {
     setTimeout(function () {
-        return dispatch(doneRolling());
+        dispatch(doneRolling());
+        dispatch(calcTotals());
     }, 500);
 
     return {
@@ -2595,7 +2596,7 @@ function rollDice(dispatch) {
     };
 }
 
-function doneRolling() {
+function doneRolling(dispatch) {
     return {
         type: DONE_ROLLING
     };
