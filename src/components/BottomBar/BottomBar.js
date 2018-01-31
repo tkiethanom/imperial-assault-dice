@@ -1,19 +1,8 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import Icon from 'components/Icon/Icon';
 
 import './BottomBar.scss';
-
-import {
-    rollDice,
-    resetDice,
-    clearAllDice,
-    calcTotals,
-    clearTotals,
-} from 'actions/Dice/DiceActions';
 
 class BottomBar extends Component {
     blockClass = 'bottom-bar';
@@ -45,17 +34,14 @@ class BottomBar extends Component {
         }
     };
 
-    handleRoll = e => {
-        if (!this.props.Dice.isRolling) {
-            this.props.dispatch(clearAllDice());
-            this.props.dispatch(rollDice());
+    handleRoll = () => {
+        if (!this.props.isRolling) {
+            this.props.onRoll();
         }
     };
 
-    handleReset = e => {
-        this.props.dispatch(resetDice());
-        this.props.dispatch(clearTotals());
-        this.handleResize();
+    handleReset = () => {
+        this.props.onReset();
     };
 
     render() {
@@ -67,12 +53,10 @@ class BottomBar extends Component {
                 <button
                     className={`btn btn-success ${
                         this.blockClass
-                    }__roll-button ${
-                        this.props.Dice.isRolling ? 'disabled' : ''
-                    }`}
+                    }__roll-button ${this.props.isRolling ? 'disabled' : ''}`}
                     onClick={this.handleRoll}
                 >
-                    {this.props.Dice.isRolling ? (
+                    {this.props.isRolling ? (
                         <i className="fa fa-spinner fa-spin" />
                     ) : (
                         'Roll'
@@ -87,7 +71,7 @@ class BottomBar extends Component {
                     Reset
                 </button>
 
-                <If condition={this.props.Dice.totals}>
+                <If condition={this.props.totals}>
                     <div className={`${this.blockClass}__totals`}>
                         <div className={`${this.blockClass}__offense-total`}>
                             <div
@@ -100,7 +84,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-damage`}
                                 />{' '}
-                                {this.props.Dice.totals.damage}
+                                {this.props.totals.damage}
                             </div>
                             <div
                                 className={`${this.blockClass}__surge`}
@@ -112,7 +96,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-surge`}
                                 />{' '}
-                                {this.props.Dice.totals.surge}
+                                {this.props.totals.surge}
                             </div>
                             <div
                                 className={`${this.blockClass}__accuracy`}
@@ -124,7 +108,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-accuracy`}
                                 />{' '}
-                                {this.props.Dice.totals.accuracy}
+                                {this.props.totals.accuracy}
                             </div>
                         </div>
                         <div className={`${this.blockClass}__defense-total`}>
@@ -138,7 +122,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-block`}
                                 />{' '}
-                                {this.props.Dice.totals.block}
+                                {this.props.totals.block}
                             </div>
                             <div
                                 className={`${this.blockClass}__evade`}
@@ -150,7 +134,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-evade`}
                                 />{' '}
-                                {this.props.Dice.totals.evade}
+                                {this.props.totals.evade}
                             </div>
                             <div
                                 className={`${this.blockClass}__dodge`}
@@ -162,7 +146,7 @@ class BottomBar extends Component {
                                         this.blockClass
                                     }__icon-dodge`}
                                 />{' '}
-                                {this.props.Dice.totals.dodge}
+                                {this.props.totals.dodge}
                             </div>
                         </div>
                     </div>
@@ -173,13 +157,10 @@ class BottomBar extends Component {
 }
 
 BottomBar.propTypes = {
-    Dice: PropTypes.shape({
-        totals: PropTypes.object,
-        isRolling: PropTypes.bool,
-    }),
-    dispatch: PropTypes.func,
+    totals: PropTypes.object,
+    isRolling: PropTypes.bool,
+    onRoll: PropTypes.func,
+    onReset: PropTypes.func,
 };
 
-export default connect(state => ({
-    Dice: state.Dice,
-}))(BottomBar);
+export default BottomBar;

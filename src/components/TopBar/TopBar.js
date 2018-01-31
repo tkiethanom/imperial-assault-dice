@@ -28,9 +28,9 @@ class TopBar extends Component {
                         <span className="icon-bar" />
                     </button>
 
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to={__URL_PREFIX__ || '/'}>
                         Imperial Assault Dice
-                    </a>
+                    </Link>
                 </div>
 
                 <div
@@ -38,19 +38,11 @@ class TopBar extends Component {
                         this.blockClass
                     }__navbar-collapse collapse navbar-collapse`}
                 >
-                    <ul className={`${this.blockClass}__navbar nav navbar-nav`}>
-                        <li
-                            className={
-                                this.props.location.pathname === '/' ||
-                                this.props.location.pathname.indexOf(
-                                    '/imperial-assault-dice',
-                                ) !== -1
-                                    ? 'active'
-                                    : ''
-                            }
-                        >
-                            <Link to="/imperial-assault-dice">Home</Link>
-                        </li>
+                    <ul
+                        className={`${
+                            this.blockClass
+                        }__navbar nav navbar-nav navbar-right`}
+                    >
                         {/* <li
                             className={
                                 this.props.location.pathname === '/breakdown'
@@ -62,12 +54,13 @@ class TopBar extends Component {
                         </li> */}
                         <li
                             className={
-                                this.props.location.pathname === '/about'
+                                this.props.location.pathname ===
+                                `${__URL_PREFIX__}/about`
                                     ? 'active'
                                     : ''
                             }
                         >
-                            <Link to="/about">About</Link>
+                            <Link to={`${__URL_PREFIX__}/about`}>About</Link>
                         </li>
                     </ul>
                 </div>
@@ -77,7 +70,7 @@ class TopBar extends Component {
 }
 
 TopBar.propTypes = {
-    location: PropTypes.shape({ pathname: PropTypes.string }),
+    location: PropTypes.shape({ pathname: PropTypes.string }).isRequired,
 };
 
 export default withRouter(TopBar);

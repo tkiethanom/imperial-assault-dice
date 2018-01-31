@@ -18,12 +18,15 @@ export default class App extends Component {
                         <TopBar />
                         <div className="app-content">
                             <Switch>
-                                <Route exact path="/" component={Home} />
                                 <Route
-                                    path="/imperial-assault-dice"
+                                    exact
+                                    path={`${__URL_PREFIX__}/`}
                                     component={Home}
                                 />
-                                <Route path="/about" component={About} />
+                                <Route
+                                    path={`${__URL_PREFIX__}/about`}
+                                    component={About}
+                                />
                                 <Route component={Home} />
                             </Switch>
                         </div>

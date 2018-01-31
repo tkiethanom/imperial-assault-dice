@@ -1,24 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import numeral from 'numeral';
 import Icon from 'components/Icon/Icon';
-
-import { showStatsMobile, hideStatsMobile } from 'actions/Dice/DiceActions';
 
 import './DiceStats.scss';
 
 class DiceStats extends Component {
     blockClass = 'dice-stats';
-
-    handleShowStats = () => {
-        this.props.dispatch(showStatsMobile());
-    };
-
-    handleHideStats = () => {
-        this.props.dispatch(hideStatsMobile());
-    };
 
     render() {
         return (
@@ -27,21 +15,21 @@ class DiceStats extends Component {
                     className={`${
                         this.blockClass
                     }__show-stats-button-container ${
-                        this.props.Dice.showStatsMobile ? 'hide' : 'visible-xs'
+                        this.props.isShowingMobileStats ? 'hide' : 'visible-xs'
                     }`}
                 >
                     <button
                         className={`${
                             this.blockClass
                         }__show-stats-button btn btn-default`}
-                        onClick={this.handleShowStats}
+                        onClick={this.props.onShowMobileStats}
                     >
                         Show Stats
                     </button>
                 </div>
                 <div
                     className={`${this.blockClass}__stats-container ${
-                        this.props.Dice.showStatsMobile ? '' : 'hidden-xs'
+                        this.props.isShowingMobileStats ? '' : 'hidden-xs'
                     }`}
                 >
                     <table className="table table-striped">
@@ -102,73 +90,73 @@ class DiceStats extends Component {
                             {/* <tr>
                                 <th>Min</th>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.damage.min}
+                                    {this.props.stats.damage.min}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.surge.min}
+                                    {this.props.stats.surge.min}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.accuracy.min}
+                                    {this.props.stats.accuracy.min}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.block.min}
+                                    {this.props.stats.block.min}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.evade.min}
+                                    {this.props.stats.evade.min}
                                 </td>
                             </tr> */}
                             <tr>
                                 <th>Max</th>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.damage.max}
+                                    {this.props.stats.damage.max}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.surge.max}
+                                    {this.props.stats.surge.max}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.accuracy.max}
+                                    {this.props.stats.accuracy.max}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.block.max}
+                                    {this.props.stats.block.max}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.evade.max}
+                                    {this.props.stats.evade.max}
                                 </td>
                                 <td className="text-right">
-                                    {this.props.Dice.stats.dodge.max}
+                                    {this.props.stats.dodge.max}
                                 </td>
                             </tr>
                             <tr>
                                 <th>Avg</th>
                                 <td className="text-right">
                                     {numeral(
-                                        this.props.Dice.stats.damage.avg,
+                                        this.props.stats.damage.avg,
                                     ).format('0.[00]')}
                                 </td>
                                 <td className="text-right">
-                                    {numeral(
-                                        this.props.Dice.stats.surge.avg,
-                                    ).format('0.[00]')}
+                                    {numeral(this.props.stats.surge.avg).format(
+                                        '0.[00]',
+                                    )}
                                 </td>
                                 <td className="text-right">
                                     {numeral(
-                                        this.props.Dice.stats.accuracy.avg,
+                                        this.props.stats.accuracy.avg,
                                     ).format('0.[00]')}
                                 </td>
                                 <td className="text-right">
-                                    {numeral(
-                                        this.props.Dice.stats.block.avg,
-                                    ).format('0.[00]')}
+                                    {numeral(this.props.stats.block.avg).format(
+                                        '0.[00]',
+                                    )}
                                 </td>
                                 <td className="text-right">
-                                    {numeral(
-                                        this.props.Dice.stats.evade.avg,
-                                    ).format('0.[00]')}
+                                    {numeral(this.props.stats.evade.avg).format(
+                                        '0.[00]',
+                                    )}
                                 </td>
                                 <td className="text-right">
-                                    {numeral(
-                                        this.props.Dice.stats.dodge.avg,
-                                    ).format('0.[00]')}
+                                    {numeral(this.props.stats.dodge.avg).format(
+                                        '0.[00]',
+                                    )}
                                 </td>
                             </tr>
                         </tbody>
@@ -176,7 +164,7 @@ class DiceStats extends Component {
                     <div className="visible-xs ">
                         <button
                             className="btn btn-default"
-                            onClick={this.handleHideStats}
+                            onClick={this.props.onHideMobileStats}
                         >
                             Hide Stats
                         </button>
@@ -188,10 +176,10 @@ class DiceStats extends Component {
 }
 
 DiceStats.propTypes = {
-    Dice: PropTypes.shape({
-        stats: PropTypes.object,
-        showStatsMobile: PropTypes.bool,
-    }),
+    stats: PropTypes.object.isRequired,
+    isShowingMobileStats: PropTypes.bool.isRequired,
+    onShowMobileStats: PropTypes.func.isRequired,
+    onHideMobileStats: PropTypes.func.isRequired,
 };
 
-export default connect(state => ({ Dice: state.Dice }))(DiceStats);
+export default DiceStats;

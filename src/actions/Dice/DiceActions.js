@@ -6,11 +6,9 @@ export const RESET_DICE = 'RESET_DICE';
 export const REROLL_DICE = 'REROLL_DICE';
 export const DONE_REROLLING = 'DONE_REROLLING';
 export const CLEAR_ALL_DICE = 'CLEAR_ALL_DICE';
-export const CLEAR_DICE = 'CLEAR_DICE';
 export const CALC_TOTALS = 'CALC_TOTALS';
-export const CLEAR_TOTALS = 'CLEAR_TOTALS';
-export const SHOW_STATS_MOBILE = 'SHOW_STATS_MOBILE';
-export const HIDE_STATS_MOBILE = 'HIDE_STATS_MOBILE';
+export const SHOW_MOBILE_STATS = 'SHOW_MOBILE_STATS';
+export const HIDE_MOBILE_STATS = 'HIDE_MOBILE_STATS';
 
 export function selectDice(index) {
     return {
@@ -49,9 +47,10 @@ export function resetDice() {
     };
 }
 
-export function rerollDice() {
+export function rerollDice(index) {
     return {
         type: REROLL_DICE,
+        value: index,
     };
 }
 
@@ -68,33 +67,20 @@ export function clearAllDice() {
     };
 }
 
-export function clearDice(index) {
-    return {
-        type: CLEAR_DICE,
-        value: index,
-    };
-}
-
 export function calcTotals() {
     return {
         type: CALC_TOTALS,
     };
 }
 
-export function clearTotals() {
+export function showMobileStats() {
     return {
-        type: CLEAR_TOTALS,
+        type: SHOW_MOBILE_STATS,
     };
 }
 
-export function showStatsMobile() {
+export function hideMobileStats() {
     return {
-        type: SHOW_STATS_MOBILE,
-    };
-}
-
-export function hideStatsMobile() {
-    return {
-        type: HIDE_STATS_MOBILE,
+        type: HIDE_MOBILE_STATS,
     };
 }

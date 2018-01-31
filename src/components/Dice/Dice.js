@@ -1,14 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import {
-    removeDice,
-    rerollDice,
-    doneRerolling,
-    clearDice,
-    calcTotals,
-} from 'actions/Dice/DiceActions';
 import Icon from 'components/Icon/Icon';
 
 import './Dice.scss';
@@ -16,35 +7,15 @@ import './Dice.scss';
 class Dice extends Component {
     blockClass = 'dice';
 
-    state = {
-        isRerolling: false,
-    };
-
     handleRemove = e => {
-        this.props.dispatch(
-            removeDice(e.currentTarget.getAttribute('data-index')),
-        );
-        this.props.dispatch(calcTotals());
+        this.props.onRemove(e.currentTarget.getAttribute('data-index'));
     };
 
     handleReroll = e => {
-        const context = this;
-        const target = e.currentTarget;
+        if (!this.props.isRolling) {
+            const index = e.currentTarget.getAttribute('data-index');
 
-        if (!this.state.isRerolling) {
-            this.props.dispatch(clearDice(target.getAttribute('data-index')));
-
-            this.setState({ isRerolling: true });
-            context.props.dispatch(rerollDice());
-
-            setTimeout(function() {
-                context.props.dispatch(
-                    doneRerolling(target.getAttribute('data-index')),
-                );
-                context.props.dispatch(calcTotals());
-
-                context.setState({ isRerolling: false });
-            }, 500);
+            this.props.onReroll(index);
         }
     };
 
@@ -144,7 +115,7 @@ class Dice extends Component {
                 >
                     <i
                         className={`${
-                            this.state.isRerolling ? 'disabled fa-spin' : ''
+                            this.props.isRolling ? 'disabled fa-spin' : ''
                         } fa fa-repeat`}
                     />
                 </div>
@@ -154,9 +125,11 @@ class Dice extends Component {
 }
 
 Dice.propTypes = {
-    diceData: PropTypes.shape({ color: PropTypes.string }),
-    index: PropTypes.number,
-    dispatch: PropTypes.func,
+    isRolling: PropTypes.bool,
+    diceData: PropTypes.shape({ color: PropTypes.string }).isRequired,
+    index: PropTypes.number.isRequired,
+    onRemove: PropTypes.func.isRequired,
+    onReroll: PropTypes.func.isRequired,
 };
 
 export default Dice;

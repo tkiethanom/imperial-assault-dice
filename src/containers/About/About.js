@@ -7,21 +7,22 @@ export default class About extends Component {
                 <h2>About</h2>
                 <p>
                     Thanks for checking out my app! This app was built just for
-                    fun and great appreciation for Star Wars Imperial Assault.{' '}
+                    fun and with great appreciation for Star Wars Imperial
+                    Assault.{' '}
                 </p>
 
                 <p>
-                    This app was built with React, Redux, Webpack, SASS,
-                    Bootstrap, FontAwesome among other things.
+                    Built with React, Redux, Webpack, SASS, Bootstrap,
+                    FontAwesome among other things.
                 </p>
 
                 <p>
-                    Check out the Github project <i className="fa fa-github" />{' '}
+                    Check out the{' '}
                     <a
                         href="https://github.com/tkiethanom/imperial-assault-dice"
                         target="_blank"
                     >
-                        here
+                        Github project <i className="fa fa-github" />
                     </a>
                 </p>
             </div>

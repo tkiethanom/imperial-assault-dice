@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { Link } from 'react-router';
 
 import './SelectedDice.scss';
 
@@ -17,13 +14,15 @@ class SelectedDice extends Component {
                 <p>Selected Dice</p>
 
                 <div className={`${this.blockClass}__inner`}>
-                    {this.props.Dice.selected.map((item, i) => {
+                    {this.props.selected.map((item, i) => {
                         return (
                             <Dice
                                 key={i}
                                 index={i}
                                 diceData={item}
-                                {...this.props}
+                                onRemove={this.props.onRemove}
+                                onReroll={this.props.onReroll}
+                                isRolling={item.isRolling}
                             />
                         );
                     })}
@@ -34,7 +33,9 @@ class SelectedDice extends Component {
 }
 
 SelectedDice.propTypes = {
-    Dice: PropTypes.shape({ selected: PropTypes.array }),
+    selected: PropTypes.array.isRequired,
+    onRemove: PropTypes.func.isRequired,
+    onReroll: PropTypes.func.isRequired,
 };
 
-export default connect(state => ({ Dice: state.Dice }))(SelectedDice);
+export default SelectedDice;

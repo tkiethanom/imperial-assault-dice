@@ -9,11 +9,9 @@ import {
     REROLL_DICE,
     DONE_REROLLING,
     CLEAR_ALL_DICE,
-    CLEAR_DICE,
     CALC_TOTALS,
-    CLEAR_TOTALS,
-    SHOW_STATS_MOBILE,
-    HIDE_STATS_MOBILE,
+    SHOW_MOBILE_STATS,
+    HIDE_MOBILE_STATS,
 } from 'actions/Dice/DiceActions';
 
 import diceData from 'data/dice.json';
@@ -92,7 +90,9 @@ const initialState = {
     isRolling: false,
     isRerolling: false,
     totals: null,
-    showStatsMobile: false,
+    isShowingMobileStats: false,
+    dice: diceData,
+    selected: [],
     stats: {
         damage: {
             min: 0,
@@ -125,57 +125,6 @@ const initialState = {
             avg: 0,
         },
     },
-    dice: diceData,
-    selected: [],
-    /*{color: 'blue', type: 'offense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: true } },
-    {color: 'blue', type: 'offense', face: {damage: 2, surge: 1, accuracy: 2, block: 0, miss: false } },
-    {color: 'blue', type: 'offense', face: {damage: 2, surge: 0, accuracy: 3, block: 0, miss: false } },
-    {color: 'blue', type: 'offense', face: {damage: 2, surge: 0, accuracy: 4, block: 0, miss: false } },
-    {color: 'blue', type: 'offense', face: {damage: 1, surge: 0, accuracy: 5, block: 0, miss: false } },
-    {color: 'blue', type: 'offense', face: {damage: 1, surge: 1, accuracy: 6, block: 0, miss: false } },
-
-    {color: 'red', type: 'offense', face: {damage: 1, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'red', type: 'offense', face: {damage: 2, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'red', type: 'offense', face: {damage: 2, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'red', type: 'offense', face: {damage: 2, surge: 0, accuracy: 0, block: 0, miss: false }},
-    {color: 'red', type: 'offense', face: {damage: 3, surge: 0, accuracy: 0, block: 0, miss: false }},
-    {color: 'red', type: 'offense', face: {damage: 3, surge: 1, accuracy: 0, block: 0, miss: false }},
-
-    {color: 'yellow', type: 'offense', face: {damage: 0, surge: 1, accuracy: 1, block: 0, miss: false }},
-    {color: 'yellow', type: 'offense', face: {damage: 1, surge: 0, accuracy: 1, block: 0, miss: false }},
-    {color: 'yellow', type: 'offense', face: {damage: 1, surge: 0, accuracy: 2, block: 0, miss: false }},
-    {color: 'yellow', type: 'offense', face: {damage: 1, surge: 1, accuracy: 0, block: 0, miss: false }},
-    {color: 'yellow', type: 'offense', face: {damage: 2, surge: 0, accuracy: 0, block: 0, miss: false }},
-    {color: 'yellow', type: 'offense', face: {damage: 2, surge: 1, accuracy: 0, block: 0, miss: false }},
-
-    {color: 'green', type: 'offense', face: {damage: 1, surge: 0, accuracy: 0, block: 0, miss: false }},
-    {color: 'green', type: 'offense', face: {damage: 0, surge: 1, accuracy: 0, block: 0, miss: false }},
-    {color: 'green', type: 'offense', face: {damage: 0, surge: 1, accuracy: 1, block: 0, miss: false }},
-    {color: 'green', type: 'offense', face: {damage: 1, surge: 0, accuracy: 1, block: 0, miss: false }},
-    {color: 'green', type: 'offense', face: {damage: 1, surge: 1, accuracy: 0, block: 0, miss: false }},
-    {color: 'green', type: 'offense', face: {damage: 1, surge: 1, accuracy: 1, block: 0, miss: false }},
-
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 1, miss: false } },
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 1, miss: false } },
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 1, miss: false } },
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 2, miss: false } },
-    {color: 'gray', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 3, miss: false } },
-
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 2, miss: false } },
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 2, miss: false } },
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 2, miss: false } },
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 3, miss: false } },
-    {color: 'black', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 4, miss: false } },
-
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 0, miss: false } },
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 1, miss: false } },
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 1, miss: false } },
-    {color: 'brown', type: 'defense', face: {damage: 0, surge: 0, accuracy: 0, block: 2, miss: false } },
-    */
 };
 
 export default (state = initialState, action = null) => {
@@ -226,16 +175,27 @@ export default (state = initialState, action = null) => {
         case RESET_DICE:
             return _.assign({}, state, {
                 selected: initialState.selected,
+                totals: null,
             });
         case REROLL_DICE:
+            cloned = _.clone(state.selected);
+
+            cloned[action.value] = {
+                ...cloned[action.value],
+                face: null,
+                isRolling: true,
+            };
+
             return {
                 ...state,
                 isRerolling: true,
+                selected: cloned,
             };
         case DONE_REROLLING:
             cloned = _.clone(state.selected);
 
             cloned[action.value] = roll(cloned[action.value]);
+            cloned[action.value].isRolling = false;
 
             return {
                 ...state,
@@ -255,33 +215,17 @@ export default (state = initialState, action = null) => {
             return _.assign({}, state, {
                 selected: cloned,
             });
-        case CLEAR_DICE:
-            cloned = _.clone(state.selected);
-
-            dice = _.clone(cloned[action.value]);
-
-            cloned[action.value] = _.assign({}, dice, {
-                face: null,
-            });
-
-            return _.assign({}, state, {
-                selected: cloned,
-            });
         case CALC_TOTALS:
             return _.assign({}, state, {
                 totals: calcTotals(state.selected),
             });
-        case CLEAR_TOTALS:
+        case SHOW_MOBILE_STATS:
             return _.assign({}, state, {
-                totals: null,
+                isShowingMobileStats: true,
             });
-        case SHOW_STATS_MOBILE:
+        case HIDE_MOBILE_STATS:
             return _.assign({}, state, {
-                showStatsMobile: true,
-            });
-        case HIDE_STATS_MOBILE:
-            return _.assign({}, state, {
-                showStatsMobile: false,
+                isShowingMobileStats: false,
             });
         default:
             return state;

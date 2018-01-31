@@ -25,7 +25,7 @@ Icon.propTypes = {
         'block',
         'evade',
         'dodge',
-    ]),
+    ]).isRequired,
     iconClassName: PropTypes.string,
 };
 
