@@ -40,7 +40,7 @@ class RollDice extends Component {
                     }
                 >
                     <Sound
-                        url="../../assets/audio/dice-roll.mp3"
+                        url={`${__URL_PREFIX__}/assets/audio/dice-roll.mp3`}
                         playStatus={Sound.status.PLAYING}
                     />
                 </If>

@@ -32,6 +32,9 @@ module.exports = {
                       to: path.join(__dirname, 'dist', 'assets'),
                   },
               ]),
+              new webpack.DefinePlugin({
+                  __URL_PREFIX__: JSON.stringify(''),
+              }),
           ]
         : [
               new CleanWebpackPlugin(['dist']),
@@ -44,6 +47,9 @@ module.exports = {
                       to: path.join(__dirname, 'dist', 'assets'),
                   },
               ]),
+              new webpack.DefinePlugin({
+                  __URL_PREFIX__: JSON.stringify('/imperial-assault-dice'),
+              }),
           ],
     module: {
         rules: [
