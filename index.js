@@ -54213,7 +54213,7 @@ var RollDice = function (_Component) {
                     _react2.default.createElement(_BottomBar2.default, null)
                 ) : null,
                 this.props.Dice.isRolling || this.props.Dice.isRerolling ? _react2.default.createElement(_reactSound2.default, {
-                    url: '../../assets/audio/dice-roll.mp3',
+                    url: "/imperial-assault-dice" + '/assets/audio/dice-roll.mp3',
                     playStatus: _reactSound2.default.status.PLAYING
                 }) : null
             );
