@@ -48,7 +48,7 @@ class BottomBar extends Component {
     handleRoll = e => {
         if (!this.props.Dice.isRolling) {
             this.props.dispatch(clearAllDice());
-            this.props.dispatch(rollDice(this.props.dispatch));
+            this.props.dispatch(rollDice());
         }
     };
 

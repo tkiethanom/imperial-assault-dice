@@ -26,18 +26,18 @@ export function removeDice(index) {
     };
 }
 
-export function rollDice(dispatch) {
-    setTimeout(() => {
-        dispatch(doneRolling());
-        dispatch(calcTotals());
-    }, 500);
+export function rollDice() {
+    return dispatch => {
+        dispatch({ type: ROLL_DICE });
 
-    return {
-        type: ROLL_DICE,
+        setTimeout(() => {
+            dispatch(doneRolling());
+            dispatch(calcTotals());
+        }, 500);
     };
 }
 
-export function doneRolling(dispatch) {
+export function doneRolling() {
     return {
         type: DONE_ROLLING,
     };
@@ -98,10 +98,3 @@ export function hideStatsMobile() {
         type: HIDE_STATS_MOBILE,
     };
 }
-
-// function playDiceRollSound() {
-//     const audio = $('#audioDiceRoll')[0];
-//     audio.pause();
-//     audio.currentTime = 0;
-//     audio.play();
-// }
