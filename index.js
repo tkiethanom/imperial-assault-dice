@@ -2585,18 +2585,18 @@ function removeDice(index) {
     };
 }
 
-function rollDice(dispatch) {
-    setTimeout(function () {
-        dispatch(doneRolling());
-        dispatch(calcTotals());
-    }, 500);
+function rollDice() {
+    return function (dispatch) {
+        dispatch({ type: ROLL_DICE });
 
-    return {
-        type: ROLL_DICE
+        setTimeout(function () {
+            dispatch(doneRolling());
+            dispatch(calcTotals());
+        }, 500);
     };
 }
 
-function doneRolling(dispatch) {
+function doneRolling() {
     return {
         type: DONE_ROLLING
     };
@@ -2657,13 +2657,6 @@ function hideStatsMobile() {
         type: HIDE_STATS_MOBILE
     };
 }
-
-// function playDiceRollSound() {
-//     const audio = $('#audioDiceRoll')[0];
-//     audio.pause();
-//     audio.currentTime = 0;
-//     audio.play();
-// }
 
 /***/ }),
 /* 62 */
@@ -56104,7 +56097,7 @@ var BottomBar = function (_Component) {
         }, _this.handleRoll = function (e) {
             if (!_this.props.Dice.isRolling) {
                 _this.props.dispatch((0, _DiceActions.clearAllDice)());
-                _this.props.dispatch((0, _DiceActions.rollDice)(_this.props.dispatch));
+                _this.props.dispatch((0, _DiceActions.rollDice)());
             }
         }, _this.handleReset = function (e) {
             _this.props.dispatch((0, _DiceActions.resetDice)());
