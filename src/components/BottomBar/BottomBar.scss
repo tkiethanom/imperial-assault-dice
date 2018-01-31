@@ -1,0 +1,88 @@
+$blockClass: '.bottom-bar';
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    background-color: #eee;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+
+    &__roll-button {
+        margin-right: 15px;
+        width: 50px;
+    }
+    &__reset-button {
+        margin-right: 15px;
+    }
+    &__totals {
+        display: inline-block;
+        font-size: 20px;
+    }
+    &__offense-total {
+        display: inline-block;
+        padding-top: 5px;
+        vertical-align: middle;
+    }
+    &__defense-total {
+        display: inline-block;
+        padding-top: 5px;
+        vertical-align: middle;
+    }
+    &__damage {
+        display: inline-block;
+        margin-right: 15px;
+
+        #{$blockClass}__icon-damage {
+            font-size: 16px;
+        }
+    }
+    &__surge {
+        display: inline-block;
+        margin-right: 15px;
+
+        #{$blockClass}__icon-surge {
+            font-size: 11px;
+            vertical-align: middle;
+        }
+    }
+    &__accuracy {
+        display: inline-block;
+        margin-right: 15px;
+
+        #{$blockClass}__icon-accuracy {
+            font-size: 19px;
+        }
+    }
+    &__block {
+        display: inline-block;
+        margin-right: 15px;
+
+        #{$blockClass}__icon-block {
+            font-size: 17px;
+        }
+    }
+    &__evade {
+        display: inline-block;
+        margin-right: 15px;
+
+        #{$blockClass}__icon-evade {
+            font-size: 17px;
+        }
+    }
+    &__dodge {
+        display: inline-block;
+        margin-right: 0px;
+
+        #{$blockClass}__icon-dodge {
+            font-size: 18px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        &__totals {
+            display: block;
+            padding: 10px 0 0 0;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+.dice-stats {
+    &__show-stats-button {
+        position: absolute;
+        right: -33px;
+        top: -70px;
+        transform: rotate(-90deg);
+    }
+
+    &__show-stats-button {
+        border-radius: 0;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-bottom: 0;
+    }
+
+    &__stats-container {
+        table {
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+
+            thead th {
+                background-color: #333;
+                color: #fff;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    &__icon {
+        &-damage {
+            font-size: 18px;
+        }
+
+        &-surge {
+            font-size: 12px;
+        }
+
+        &-accuracy {
+            font-size: 20px;
+        }
+
+        &-block {
+            font-size: 16px;
+        }
+
+        &-evade {
+            font-size: 16px;
+        }
+
+        &-dodge {
+            font-size: 16px;
+        }
+    }
+}

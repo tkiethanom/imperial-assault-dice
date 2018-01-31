@@ -1,0 +1,345 @@
+@import '~scss/variables';
+
+$blockClass: '.dice';
+
+.dice {
+    float: left;
+    margin: 10px 20px 5px 0;
+    position: relative;
+
+    &__remove {
+        position: absolute;
+        top: -15px;
+        right: -17px;
+        cursor: pointer;
+
+        .fa-circle {
+            color: #eee;
+        }
+        .fa-remove {
+            color: #000;
+        }
+    }
+
+    &__reroll {
+        text-align: center;
+        width: 16px;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    &__inner {
+        position: relative;
+        height: 64px;
+        width: 64px;
+        border-radius: 10px;
+        color: #fff;
+        font-family: 'Russo One', sans-serif;
+
+        &--blue {
+            background-color: $dice-blue;
+            color: #fff;
+        }
+
+        &--red {
+            background-color: $dice-red;
+        }
+
+        &--yellow {
+            background-color: $dice-yellow;
+            color: #000;
+        }
+
+        &--green {
+            background-color: $dice-green;
+        }
+
+        &--white {
+            background-color: $dice-white;
+            color: #000;
+            border: 1px solid $dice-white-border;
+        }
+
+        &--black {
+            background-color: $dice-black;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+    }
+    &__damage {
+        font-size: 20px;
+    }
+    &__surge {
+        font-size: 12px;
+    }
+    &__accuracy {
+        position: absolute;
+        font-size: 30px;
+        right: 8px;
+        top: 10px;
+    }
+    &__block {
+        font-size: 20px;
+    }
+    &__evade {
+        font-size: 20px;
+    }
+
+    &__dodge {
+        font-size: 24px;
+    }
+
+    &__0d-1s-2a {
+        #{$blockClass}__surge--1 {
+            top: 23px;
+            left: 7px;
+        }
+    }
+
+    &__1d-0s-2a {
+        #{$blockClass}__damage--1 {
+            top: 16px;
+            left: 9px;
+        }
+    }
+
+    &__1d-1s-3a {
+        #{$blockClass}__damage--1 {
+            top: 8px;
+            left: 9px;
+        }
+        #{$blockClass}__surge--1 {
+            bottom: 8px;
+            left: 7px;
+        }
+    }
+
+    &__2d-0s-3a {
+        #{$blockClass}__damage--1 {
+            top: 5px;
+            left: 9px;
+        }
+        #{$blockClass}__damage--2 {
+            bottom: 5px;
+            left: 9px;
+        }
+    }
+
+    &__2d-0s-4a {
+        #{$blockClass}__damage--1 {
+            top: 5px;
+            left: 9px;
+        }
+        #{$blockClass}__damage--2 {
+            bottom: 5px;
+            left: 9px;
+        }
+    }
+
+    &__1d-0s-5a {
+        #{$blockClass}__damage--1 {
+            top: 16px;
+            left: 9px;
+        }
+    }
+
+    &__1d-0s-0a {
+        #{$blockClass}__damage--1 {
+            top: 16px;
+            left: 22px;
+        }
+    }
+
+    &__2d-0s-0a {
+        #{$blockClass}__damage--1 {
+            top: 6px;
+            left: 9px;
+        }
+
+        #{$blockClass}__damage--2 {
+            bottom: 6px;
+            right: 9px;
+        }
+    }
+
+    &__2d-1s-0a {
+        #{$blockClass}__damage--1 {
+            top: 6px;
+            left: 8px;
+        }
+
+        #{$blockClass}__damage--2 {
+            top: 6px;
+            right: 8px;
+        }
+
+        #{$blockClass}__surge--1 {
+            bottom: 8px;
+            left: 20px;
+        }
+    }
+
+    &__3d-0s-0a {
+        #{$blockClass}__damage--1 {
+            top: 6px;
+            left: 8px;
+        }
+
+        #{$blockClass}__damage--2 {
+            top: 6px;
+            right: 8px;
+        }
+
+        #{$blockClass}__damage--3 {
+            bottom: 6px;
+            left: 22px;
+        }
+    }
+
+    &__0d-1s-0a {
+        #{$blockClass}__surge--1 {
+            top: 23px;
+            left: 20px;
+        }
+    }
+
+    &__1d-2s-0a {
+        #{$blockClass}__surge--1 {
+            top: 12px;
+            left: 7px;
+        }
+
+        #{$blockClass}__surge--2 {
+            top: 12px;
+            right: 7px;
+        }
+
+        #{$blockClass}__damage--1 {
+            bottom: 7px;
+            left: 20px;
+        }
+    }
+
+    &__1d-1s-1a {
+        #{$blockClass}__damage--1 {
+            top: 9px;
+            left: 12px;
+        }
+        #{$blockClass}__surge--1 {
+            bottom: 9px;
+            left: 10px;
+        }
+        #{$blockClass}__accuracy--1 {
+            right: 10px;
+        }
+    }
+
+    &__2d-0s-1a {
+        #{$blockClass}__damage--1 {
+            top: 5px;
+            left: 10px;
+        }
+        #{$blockClass}__damage--2 {
+            bottom: 5px;
+            left: 10px;
+        }
+        #{$blockClass}__accuracy--1 {
+            right: 10px;
+        }
+    }
+
+    &__0d-1s-1a {
+        #{$blockClass}__surge--1 {
+            top: 25px;
+            left: 9px;
+        }
+        #{$blockClass}__accuracy--1 {
+            right: 10px;
+        }
+    }
+
+    &__1d-1s-2a {
+        #{$blockClass}__damage--1 {
+            top: 9px;
+            left: 9px;
+        }
+        #{$blockClass}__surge--1 {
+            bottom: 9px;
+            left: 7px;
+        }
+    }
+
+    &__2d-0s-2a {
+        #{$blockClass}__damage--1 {
+            top: 5px;
+            left: 10px;
+        }
+        #{$blockClass}__damage--2 {
+            bottom: 5px;
+            left: 10px;
+        }
+    }
+
+    &__0b-0e-1d {
+        #{$blockClass}__dodge--1 {
+            top: 14px;
+            left: 20px;
+        }
+    }
+
+    &__0b-1e-0d {
+        #{$blockClass}__evade--1 {
+            top: 17px;
+            left: 22px;
+        }
+    }
+
+    &__1b-0e-0d {
+        #{$blockClass}__block--1 {
+            top: 18px;
+            left: 20px;
+        }
+    }
+
+    &__1b-1e-0d {
+        #{$blockClass}__block--1 {
+            top: 8px;
+            left: 9px;
+        }
+        #{$blockClass}__evade--1 {
+            bottom: 8px;
+            right: 9px;
+        }
+    }
+
+    &__2b-0e-0d {
+        #{$blockClass}__block--1 {
+            top: 6px;
+            left: 9px;
+        }
+
+        #{$blockClass}__block--2 {
+            bottom: 6px;
+            right: 9px;
+        }
+    }
+
+    &__3b-0e-0d {
+        #{$blockClass}__block--1 {
+            top: 6px;
+            left: 6px;
+        }
+
+        #{$blockClass}__block--2 {
+            top: 6px;
+            right: 6px;
+        }
+
+        #{$blockClass}__block--3 {
+            bottom: 6px;
+            left: 20px;
+        }
+    }
+}
